@@ -6,6 +6,9 @@ export default {
       width: {
         100: "100%",
       },
+      height: {
+        100: "100%",
+      },
     },
   },
   plugins: [],
