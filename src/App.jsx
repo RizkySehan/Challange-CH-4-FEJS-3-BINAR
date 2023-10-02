@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Header from "./Component/Header";
 import DetailsMovie from "./Pages/DetailMovie";
 import Footer from "./Component/Footer";
+import PopularMovies from "./Pages/PopularMovies";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details/:movieId" element={<DetailsMovie />} />
+        <Route path="/popular-movies" element={<PopularMovies />} />
       </Routes>
       <Footer />
     </BrowserRouter>

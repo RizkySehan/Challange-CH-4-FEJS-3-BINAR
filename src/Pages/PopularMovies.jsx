@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import MovieItem from "../Component/MovieItem";
 
-function Home() {
+function PopularMovies() {
   const [popularMovies, setPopularMovies] = useState([]);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL;
 
@@ -32,35 +32,21 @@ function Home() {
     getPopularMovies();
   }, []);
   return (
-    <>
-      <main>
-        <div className="max-w-screen-2xl mx-4">
-          <div>
-            <div className="flex justify-between mb-8">
-              <h1 className="font-bold text-2xl">Popular Movie</h1>
-              <a
-                className="italic text-red-600 hover:underline"
-                href="/popular-movies"
-              >
-                See All Popular
-              </a>
-            </div>
-            <div className="flex justify-center items-center flex-wrap max-w-screen-xl gap-5">
-              {popularMovies.map((movie) => (
-                <div key={movie?.id}>
-                  <MovieItem
-                    id={movie?.id}
-                    imgURL={`${IMAGE_PATH}${movie?.poster_path}`}
-                    title={movie?.title}
-                  />
-                </div>
-              ))}
-            </div>
+    <div>
+      <h1 className="text-center font-semibold text-4xl my-7">Popular Movie</h1>
+      <div className="flex justify-center items-center flex-wrap max-w-screen-xl gap-5">
+        {popularMovies.map((movie) => (
+          <div key={movie?.id}>
+            <MovieItem
+              id={movie?.id}
+              imgURL={`${IMAGE_PATH}${movie?.poster_path}`}
+              title={movie?.title}
+            />
           </div>
-        </div>
-      </main>
-    </>
+        ))}
+      </div>
+    </div>
   );
 }
 
-export default Home;
+export default PopularMovies;
