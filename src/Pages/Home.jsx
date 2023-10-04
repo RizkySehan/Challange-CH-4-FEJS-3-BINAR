@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MovieItem from "../Component/MovieItem";
+import Hero from "../Component/Hero";
 
 function Home() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -21,7 +22,7 @@ function Home() {
         );
         const { data } = response;
 
-        setPopularMovies(data?.results);
+        setPopularMovies(data?.results.slice(0, 10));
       } catch (error) {
         if (axios.isAxiosError(error)) {
           alert(error?.response?.data?.status_message);
@@ -33,10 +34,11 @@ function Home() {
   }, []);
   return (
     <>
+      <Hero />
       <main>
-        <div className="max-w-screen-2xl mx-4">
+        <div className="max-w-screen-2xl mx-auto mb-8 ">
           <div>
-            <div className="flex justify-between mb-8">
+            <div className="flex justify-between my-8 mx-4">
               <h1 className="font-bold text-2xl">Popular Movie</h1>
               <a
                 className="italic text-red-600 hover:underline"
@@ -45,13 +47,15 @@ function Home() {
                 See All Popular
               </a>
             </div>
-            <div className="flex justify-center items-center flex-wrap max-w-screen-xl gap-5">
+            <div className="flex justify-center items-center flex-wrap p-2 2xl:max-w-screen-2xl gap-5">
               {popularMovies.map((movie) => (
                 <div key={movie?.id}>
                   <MovieItem
                     id={movie?.id}
                     imgURL={`${IMAGE_PATH}${movie?.poster_path}`}
                     title={movie?.title}
+                    vote_average={`${movie?.vote_average} / 10`}
+                    release_date={movie?.release_date}
                   />
                 </div>
               ))}

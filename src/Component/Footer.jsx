@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="mt-8 bg-gradient-to-r from-red-500 to-red-700">
+    <footer className="bg-gradient-to-r from-red-700 to-red-900">
       <p className="text-center text-white p-8">
         &copy; Copyright 2023, College Student Binar by{" "}
         <a

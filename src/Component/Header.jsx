@@ -1,6 +1,9 @@
 function Header() {
+  const inputSearch = (q) => {
+    console.log(q);
+  };
   return (
-    <header className="p-4">
+    <header className="p-4 fixed w-full z-50">
       <nav className="flex flex-col justify-between items-center md:flex-row">
         <a href="#" className="text-4xl font-bold text-red-600 mb-2">
           Movielist
@@ -12,6 +15,7 @@ function Header() {
               name="search"
               placeholder="What do you want to watch?"
               className="outline-none bg-transparent border rounded-full border-red-600 w-[100%] px-4 py-2"
+              onChange={(e) => inputSearch(e.target.value)}
             />
             <div className="absolute top-0 right-0 transform translate-y-2 -translate-x-4">
               <img

@@ -32,15 +32,19 @@ function PopularMovies() {
     getPopularMovies();
   }, []);
   return (
-    <div>
-      <h1 className="text-center font-semibold text-4xl my-7">Popular Movie</h1>
-      <div className="flex justify-center items-center flex-wrap max-w-screen-xl gap-5">
+    <div className="max-w-screen-2xl mx-auto mb-10">
+      <h1 className="text-center font-semibold text-4xl pt-24 mb-5">
+        Popular Movie
+      </h1>
+      <div className="flex justify-center items-center flex-wrap p-2 2xl:max-w-screen-2xl gap-5">
         {popularMovies.map((movie) => (
           <div key={movie?.id}>
             <MovieItem
               id={movie?.id}
               imgURL={`${IMAGE_PATH}${movie?.poster_path}`}
               title={movie?.title}
+              vote_average={`${movie?.vote_average} / 10`}
+              release_date={movie?.release_date}
             />
           </div>
         ))}
