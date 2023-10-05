@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 function DetailMovie() {
   const { movieId } = useParams();
   const [detailMovie, setDetailMovie] = useState([]);
-  const [trailerMovie, setTrailerMovie] = useState([]);
   const IMAGE_PATH = import.meta.env.VITE_API_IMGURL;
 
   useEffect(() => {
@@ -29,30 +28,7 @@ function DetailMovie() {
       }
     };
     getDetailMovie();
-  }, []);
-
-  useEffect(() => {
-    const getTrailerMovie = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/3/movie/${movieId}/videos`,
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
-            },
-          }
-        );
-        const { data } = response;
-        setTrailerMovie(data?.results);
-        console.log(trailerMovie);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          alert(error?.response?.data?.status_message);
-        }
-        alert(error?.message);
-      }
-    };
-    getTrailerMovie();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div

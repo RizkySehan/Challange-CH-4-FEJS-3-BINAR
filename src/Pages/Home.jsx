@@ -22,7 +22,7 @@ function Home() {
         );
         const { data } = response;
 
-        setPopularMovies(data?.results.slice(0, 10));
+        setPopularMovies(data?.results.slice(0, 8));
       } catch (error) {
         if (axios.isAxiosError(error)) {
           alert(error?.response?.data?.status_message);

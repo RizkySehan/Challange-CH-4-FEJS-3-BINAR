@@ -17,8 +17,7 @@ function Hero() {
           }
         );
         const { data } = response;
-        setTrandingMovie(data?.results.slice(0, 5));
-        console.log(trandingMovie);
+        setTrandingMovie(data?.results.slice(0, 3));
       } catch (error) {
         if (axios.isAxiosError(error)) {
           alert(error?.response?.data?.status_message);
@@ -41,6 +40,17 @@ function Hero() {
       prevSlide === trandingMovie.length - 1 ? 0 : prevSlide + 1
     );
   };
+
+  const autoSlide = () => {
+    handleNextSlide();
+  };
+
+  useEffect(() => {
+    const interval = setInterval(autoSlide, 10000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [setInterval, autoSlide]);
 
   return (
     <div>

@@ -1,7 +1,22 @@
+import { useNavigate } from "react-router-dom";
+
 function Header() {
-  const inputSearch = (q) => {
-    console.log(q);
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchQuery = e.target.search.value;
+
+    if (searchQuery.trim() === "") {
+      return;
+    }
+
+    const searchUrl = `/search?query=${searchQuery}&include_adult=false&page=1`;
+
+    navigate(searchUrl);
   };
+
+  console.log(handleSearch);
   return (
     <header className="p-4 fixed w-full z-50">
       <nav className="flex flex-col justify-between items-center md:flex-row">
@@ -9,13 +24,12 @@ function Header() {
           Movielist
         </a>
         <div className="w-full relative mb-3 md:w-1/2 md:mb-0">
-          <form action="search">
+          <form action="search" onSubmit={handleSearch}>
             <input
               type="text"
               name="search"
               placeholder="What do you want to watch?"
-              className="outline-none bg-transparent border rounded-full border-red-600 w-[100%] px-4 py-2"
-              onChange={(e) => inputSearch(e.target.value)}
+              className="outline-none font-semibold text-md bg-transparent border-none ring-2 ring-red-600 rounded-full border-red-600 w-[100%] px-4 py-2"
             />
             <div className="absolute top-0 right-0 transform translate-y-2 -translate-x-4">
               <img
