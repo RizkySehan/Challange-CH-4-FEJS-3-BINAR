@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function DetailMovie() {
   const { movieId } = useParams();
@@ -40,7 +40,7 @@ function DetailMovie() {
       }}
       className="w-full min-h-screen"
     >
-      <div className="flex items-center flex-col md:flex-row pt-52 md:p-52 md:gap-10 ">
+      <div className="flex items-center flex-col md:flex-row pt-52 md:p-52 md:gap-10">
         <img
           src={`${IMAGE_PATH}${detailMovie?.poster_path}`}
           alt="Image.jpg"
@@ -52,6 +52,7 @@ function DetailMovie() {
           <h2 className="text-4xl font-bold mb-3 text-white">
             {detailMovie?.title}
           </h2>
+          <p className="text-white font-semibold">{`Release date: ${detailMovie?.release_date}`}</p>
           <p className="text-yellow-400">
             {`${detailMovie?.vote_average?.toFixed(1)} / 10`}
           </p>
@@ -70,6 +71,13 @@ function DetailMovie() {
             ))}
           </div>
           <p className="text-white font-semibold">{detailMovie?.overview}</p>
+          <Link
+            to={`/trailer/${detailMovie?.id}`}
+            className="w-36 h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"
+          >
+            <img src="play.svg" alt="play.svg" width="20px" height="20px" />
+            <p className="text-white font-semibold">Trailer Movie</p>
+          </Link>
         </div>
       </div>
     </div>

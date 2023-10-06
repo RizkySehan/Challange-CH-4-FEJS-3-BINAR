@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Hero() {
   const [trandingMovie, setTrandingMovie] = useState([]);
@@ -50,6 +51,7 @@ function Hero() {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setInterval, autoSlide]);
 
   return (
@@ -73,6 +75,13 @@ function Hero() {
           <p className="mb-3 text-md text-white font-semibold drop-shadow-lg">
             {movie?.overview}
           </p>
+          <Link
+            to={`/trailer/${movie?.id}`}
+            className="w-36 h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"
+          >
+            <img src="play.svg" alt="play.svg" width="20px" height="20px" />
+            <p className="text-white font-semibold ">Trailer Movie</p>
+          </Link>
         </div>
       ))}
       <div className="flex justify-between items-center absolute top-1/2 translate-x-0 -translate-y-1/2  w-full px-5">

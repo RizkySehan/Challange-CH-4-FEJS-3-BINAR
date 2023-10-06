@@ -6,6 +6,7 @@ import DetailsMovie from "./Pages/DetailMovie";
 import Footer from "./Component/Footer";
 import PopularMovies from "./Pages/PopularMovies";
 import SearchMovies from "./Pages/SearchMovie";
+import TrailerMovie from "./Pages/TrailerMovie";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/details/:movieId" element={<DetailsMovie />} />
         <Route path="/popular-movies" element={<PopularMovies />} />
         <Route path="/search" element={<SearchMovies />} />
+        <Route path="/trailer/:movieId" element={<TrailerMovie />} />
       </Routes>
       <Footer />
     </BrowserRouter>

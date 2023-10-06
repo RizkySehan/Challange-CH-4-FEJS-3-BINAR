@@ -16,7 +16,6 @@ function Header() {
     navigate(searchUrl);
   };
 
-  console.log(handleSearch);
   return (
     <header className="p-4 fixed w-full z-50">
       <nav className="flex flex-col justify-between items-center md:flex-row">
@@ -31,10 +30,10 @@ function Header() {
               placeholder="What do you want to watch?"
               className="outline-none font-semibold text-md bg-transparent border-none ring-2 ring-red-600 rounded-full border-red-600 w-[100%] px-4 py-2"
             />
-            <div className="absolute top-0 right-0 transform translate-y-2 -translate-x-4">
+            <div className="absolute top-0 right-0 transform translate-y-2 -translate-x-3">
               <img
-                width="20px"
-                height="20px"
+                width="25px"
+                height="25px"
                 src="search.svg"
                 alt="Search.svg"
               />
