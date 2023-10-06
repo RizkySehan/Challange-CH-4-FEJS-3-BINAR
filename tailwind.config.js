@@ -8,6 +8,7 @@ export default {
       },
       height: {
         100: "100%",
+        200: "500px",
       },
     },
   },

@@ -69,18 +69,20 @@ function Hero() {
             index === currentSlide ? "" : "hidden"
           }`}
         >
-          <h1 className="text-6xl font-bold mb-3 text-white drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 text-white drop-shadow-lg">
             {movie?.title}
           </h1>
-          <p className="mb-3 text-md text-white font-semibold drop-shadow-lg">
+          <p className="mb-3 text-sm sm:text-md md:text-lg text-white font-semibold drop-shadow-lg">
             {movie?.overview}
           </p>
           <Link
             to={`/trailer/${movie?.id}`}
-            className="w-36 h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"
+            className="w-32 h-8 sm:w-36 sm:h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"
           >
-            <img src="play.svg" alt="play.svg" width="20px" height="20px" />
-            <p className="text-white font-semibold ">Trailer Movie</p>
+            <img src="/play.svg" alt="play.svg" width="20px" height="20px" />
+            <p className="text-white text-sm sm:text-md font-semibold ">
+              Trailer Movie
+            </p>
           </Link>
         </div>
       ))}

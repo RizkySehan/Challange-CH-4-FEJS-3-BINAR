@@ -31,53 +31,58 @@ function DetailMovie() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div
-      style={{
-        backgroundImage: `url('${IMAGE_PATH}${detailMovie?.backdrop_path}')`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-      }}
-      className="w-full min-h-screen"
-    >
-      <div className="flex items-center flex-col md:flex-row pt-52 md:p-52 md:gap-10">
-        <img
-          src={`${IMAGE_PATH}${detailMovie?.poster_path}`}
-          alt="Image.jpg"
-          width="250px"
-          height="250px"
-          className="rounded-lg mb-4"
-        />
-        <div className="flex flex-col p-5 max-w-6xl min-w-min mb-40 md:mb-0">
-          <h2 className="text-4xl font-bold mb-3 text-white">
-            {detailMovie?.title}
-          </h2>
-          <p className="text-white font-semibold">{`Release date: ${detailMovie?.release_date}`}</p>
-          <p className="text-yellow-400">
-            {`${detailMovie?.vote_average?.toFixed(1)} / 10`}
-          </p>
-          {detailMovie?.tagline ? (
-            <p className=" text-white font-semibold">{`Tagline: "${detailMovie?.tagline}"`}</p>
-          ) : (
-            <p className=" text-white font-semibold">{`Tagline: "Tagline Not Found"`}</p>
-          )}
-          <div className="flex justify-start items-center gap-1">
-            {detailMovie?.genres?.map((genre) => (
-              <div key={genre?.id}>
-                <p className="p-1 rounded-lg italic font-semibold text-red-500">
-                  {genre?.name}
-                </p>
-              </div>
-            ))}
+    <div className="relative w-full min-h-screen">
+      <div
+        style={{
+          backgroundImage: `url('${IMAGE_PATH}${detailMovie?.backdrop_path}')`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+        className="w-full min-h-screen blur-sm"
+      ></div>
+      <div className="absolute top-0 flex items-center justify-start mt-10 xl:pl-20">
+        <div className="flex flex-col items-center sm:flex-row pt-42 md:gap-10">
+          <img
+            src={`${IMAGE_PATH}${detailMovie?.poster_path}`}
+            alt="Image.jpg"
+            width="250px"
+            height="250px"
+            className="rounded-lg pt-44 sm:pt-0  sm:ml-10 md:mt-40 hidden sm:inline-flex"
+          />
+          <div className="flex flex-col p-5 pt-56 sm:pt-40 max-w-6xl min-w-min mb-40 md:mb-0">
+            <h2 className="text-4xl font-bold text-white">
+              {detailMovie?.title}
+            </h2>
+            <p className="text-white font-semibold mb-3">{`Release: ${detailMovie?.release_date}`}</p>
+            <p className="text-yellow-400">
+              {`${detailMovie?.vote_average?.toFixed(1)} / 10`}
+            </p>
+            {detailMovie?.tagline ? (
+              <p className=" text-white font-semibold mb-3">{`Tagline: "${detailMovie?.tagline}"`}</p>
+            ) : (
+              <p className=" text-white font-semibold">{`Tagline: "Tagline Not Found"`}</p>
+            )}
+            <div className="flex justify-start items-center gap-1 mb-3">
+              {detailMovie?.genres?.map((genre) => (
+                <div key={genre?.id}>
+                  <p className="p-1 rounded-lg italic font-semibold text-red-500">
+                    {genre?.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="text-white font-semibold mb-5">
+              {detailMovie?.overview}
+            </p>
+            <Link
+              to={`/trailer/${detailMovie?.id}`}
+              className="w-36 h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"
+            >
+              <img src="/play.svg" alt="play.svg" width="20px" height="20px" />
+              <p className="text-white font-semibold">Trailer Movie</p>
+            </Link>
           </div>
-          <p className="text-white font-semibold">{detailMovie?.overview}</p>
-          <Link
-            to={`/trailer/${detailMovie?.id}`}
-            className="w-36 h-10 flex justify-center items-center gap-1 bg-red-700 rounded-full hover:bg-red-600"
-          >
-            <img src="play.svg" alt="play.svg" width="20px" height="20px" />
-            <p className="text-white font-semibold">Trailer Movie</p>
-          </Link>
         </div>
       </div>
     </div>
