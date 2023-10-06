@@ -30,7 +30,7 @@ function Header() {
               placeholder="What do you want to watch?"
               className="outline-none font-semibold text-md bg-transparent border-none ring-2 ring-red-600 rounded-full border-red-600 w-[100%] px-4 py-1 md:py-2"
             />
-            <div className="absolute top-0 right-0 transform translate-y-2 -translate-x-3">
+            <div className="absolute top-0 right-0 transform translate-y-1 sm:translate-y-2 -translate-x-3">
               <img
                 width="25px"
                 height="25px"
@@ -43,13 +43,13 @@ function Header() {
         <div className="flex justify-center items-center gap-2">
           <a
             href="/"
-            className="px-3 py-1 md:px-6 md:py-2 bg-transparent border-2 border-red-600 text-red-600 rounded-full hover:bg-red-600 hover:text-white transition-all duration-300"
+            className="px-3 py-1 md:px-6 md:py-2 bg-transparent border-2 border-red-600 text-red-600 rounded-full font-bold hover:bg-red-600 hover:text-white transition-all duration-300"
           >
             Login
           </a>
           <a
             href="/"
-            className="px-3 py-1 md:px-6 md:py-2 bg-red-600 border-2 border-red-600 text-white rounded-full hover:bg-transparent hover:text-red-600 transition-all duration-300"
+            className="px-3 py-1 md:px-6 md:py-2 bg-red-600 border-2 border-red-600 text-white rounded-full font-bold hover:bg-transparent hover:text-red-600 transition-all duration-300"
           >
             Register
           </a>
