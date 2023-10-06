@@ -28,8 +28,7 @@ function DetailMovie() {
       }
     };
     getDetailMovie();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieId]);
   return (
     <div className="relative w-full min-h-screen">
       <div
