@@ -39,7 +39,7 @@ function DetailMovie() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
-        className="w-full min-h-screen blur-sm"
+        className="w-full min-h-screen blur-sm contrast-125"
       ></div>
       <div className="absolute top-0 flex items-center justify-start mt-10 xl:pl-20">
         <div className="flex flex-col items-center sm:flex-row pt-42 md:gap-10">
@@ -50,12 +50,12 @@ function DetailMovie() {
             height="250px"
             className="rounded-lg pt-44 sm:pt-0  sm:ml-10 md:mt-40 hidden sm:inline-flex"
           />
-          <div className="flex flex-col p-5 pt-56 sm:pt-40 max-w-6xl min-w-min mb-40 md:mb-0">
-            <h2 className="text-4xl font-bold text-white">
+          <div className="flex flex-col p-5 pt-36 sm:pt-40 max-w-6xl min-w-min mb-40 md:mb-0">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white">
               {detailMovie?.title}
             </h2>
             <p className="text-white font-semibold mb-3">{`Release: ${detailMovie?.release_date}`}</p>
-            <p className="text-yellow-400">
+            <p className="text-yellow-400 font-bold">
               {`${detailMovie?.vote_average?.toFixed(1)} / 10`}
             </p>
             {detailMovie?.tagline ? (
@@ -63,10 +63,10 @@ function DetailMovie() {
             ) : (
               <p className=" text-white font-semibold">{`Tagline: "Tagline Not Found"`}</p>
             )}
-            <div className="flex justify-start items-center gap-1 mb-3">
+            <div className="flex justify-start items-center gap-3 mb-3">
               {detailMovie?.genres?.map((genre) => (
                 <div key={genre?.id}>
-                  <p className="p-1 rounded-lg italic font-semibold text-red-500">
+                  <p className="rounded-lg italic font-semibold text-white py-0.2 px-3 bg-red-600">
                     {genre?.name}
                   </p>
                 </div>
