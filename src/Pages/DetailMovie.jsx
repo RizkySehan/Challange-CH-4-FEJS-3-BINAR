@@ -40,8 +40,8 @@ function DetailMovie() {
         }}
         className="w-full min-h-screen blur-sm contrast-125"
       ></div>
-      <div className="absolute top-0 flex items-center justify-start mt-10 xl:pl-20">
-        <div className="flex flex-col items-center sm:flex-row pt-42 md:gap-10">
+      <div className="absolute top-0 flex items-center justify-start xl:pl-20">
+        <div className="flex flex-col items-center sm:flex-row pt-40 md:gap-10">
           <img
             src={`${IMAGE_PATH}${detailMovie?.poster_path}`}
             alt="Image.jpg"
