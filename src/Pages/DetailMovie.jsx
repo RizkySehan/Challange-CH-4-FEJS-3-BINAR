@@ -41,15 +41,15 @@ function DetailMovie() {
         className="w-full min-h-screen blur-sm contrast-125"
       ></div>
       <div className="absolute top-0 flex items-center justify-start xl:pl-20">
-        <div className="flex flex-col items-center sm:flex-row pt-40 md:gap-10">
+        <div className="flex flex-col items-center sm:flex-row pt-24 md:pt-10 md:gap-10">
           <img
             src={`${IMAGE_PATH}${detailMovie?.poster_path}`}
             alt="Image.jpg"
             width="250px"
             height="250px"
-            className="rounded-lg pt-44 sm:pt-0  sm:ml-10 md:mt-40 hidden sm:inline-flex"
+            className="rounded-lg pt-36 sm:pt-0  sm:ml-10 md:mt-40 hidden md:inline-flex"
           />
-          <div className="flex flex-col p-5 pt-36 sm:pt-40 max-w-6xl min-w-min mb-40 md:mb-0">
+          <div className="flex flex-col p-5 pt-32 md:pt-44 max-w-6xl min-w-min md:mb-0">
             <h2 className="text-4xl sm:text-5xl font-bold text-white">
               {detailMovie?.title}
             </h2>
