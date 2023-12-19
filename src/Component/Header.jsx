@@ -1,6 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -11,17 +15,30 @@ function Header() {
       return;
     }
 
-    const searchUrl = `/search?query=${searchQuery}&include_adult=false&page=1`;
+    const searchUrl = `/search?query=${searchQuery}&page=1`;
 
     navigate(searchUrl);
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", () =>
+      window.scrollY > 50 ? setIsScrolled(true) : setIsScrolled(false)
+    ),
+      [];
+  });
+
   return (
-    <header className="p-4 fixed w-full z-50">
+    <header
+      className={`${
+        isScrolled
+          ? "shadow-lg lg:bg-glassmorph lg:backdrop-blur-xl bg-white"
+          : "shadow-none bg-transparent"
+      }  p-4 fixed w-full z-50`}
+    >
       <nav className="flex flex-col justify-between items-center md:flex-row">
-        <a href="#" className="text-4xl font-bold text-red-600 mb-2">
+        <Link to="/" className="text-4xl font-bold text-red-600 mb-2">
           Movielist
-        </a>
+        </Link>
         <div className="w-full relative mb-3 md:w-1/2 md:mb-0">
           <form action="search" onSubmit={handleSearch}>
             <input
@@ -30,13 +47,8 @@ function Header() {
               placeholder="What do you want to watch?"
               className="outline-none font-semibold text-md bg-transparent border-none ring-2 ring-red-600 rounded-full border-red-600 w-[100%] px-4 py-1 md:py-2"
             />
-            <div className="absolute top-0 right-0 transform translate-y-1 md:translate-y-2 -translate-x-3">
-              <img
-                width="25px"
-                height="25px"
-                src="/search.svg"
-                alt="Search.svg"
-              />
+            <div className="absolute top-0 right-0 transform translate-y-1 md:translate-y-2 -translate-x-3 text-gray-400">
+              <FaSearch size={25} />
             </div>
           </form>
         </div>

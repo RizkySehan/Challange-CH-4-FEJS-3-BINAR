@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function MovieItem({ id, imgURL, title, vote_average, release_date }) {
   return (
@@ -14,12 +15,12 @@ function MovieItem({ id, imgURL, title, vote_average, release_date }) {
         <h2 className="font-bold text-md text-white text-center z-50">
           {release_date}
         </h2>
-        <a
-          href={`/details/${id}`}
+        <Link
+          to={`/details/${id}`}
           className="cursor-pointer underline italic text-white mt-20 opacity-70 hover:font-semibold hover:opacity-100"
         >
           click to view detail
-        </a>
+        </Link>
       </div>
     </div>
   );

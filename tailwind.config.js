@@ -10,6 +10,9 @@ export default {
         100: "100%",
         200: "500px",
       },
+      backgroundColor: {
+        glassmorph: "rgba(255, 255, 255, 0.1)",
+      },
     },
   },
   plugins: [],

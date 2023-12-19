@@ -1,36 +1,22 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import MovieItem from "../Component/MovieItem";
 import Hero from "../Component/Hero";
+import { useDispatch, useSelector } from "react-redux";
+import { getPopularMovie } from "../redux/actions/movieActions";
 
 function Home() {
-  const [popularMovies, setPopularMovies] = useState([]);
-  const IMAGE_PATH = import.meta.env.VITE_API_IMGURL;
+  const IMAGE_PATH_CARD = import.meta.env.VITE_API_IMGURL_CARD;
+  const NO_IMAGE_PATH = import.meta.env.VITE_API_NO_IMG;
+  const [errors, setErrors] = useState({
+    isError: false,
+    message: null,
+  });
+
+  const dispatch = useDispatch();
+  const { popularMovie } = useSelector((state) => state.movie);
 
   useEffect(() => {
-    const getPopularMovies = async () => {
-      try {
-        const response = await axios.get(
-          `${
-            import.meta.env.VITE_API_URL
-          }/3/movie/popular?language=en-US&page=1`,
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
-            },
-          }
-        );
-        const { data } = response;
-
-        setPopularMovies(data?.results.slice(0, 8));
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          alert(error?.response?.data?.status_message);
-        }
-        alert(error?.message);
-      }
-    };
-    getPopularMovies();
+    dispatch(getPopularMovie(setErrors, errors));
   }, []);
   return (
     <>
@@ -48,13 +34,17 @@ function Home() {
               </a>
             </div>
             <div className="flex justify-center items-center flex-wrap p-2 2xl:max-w-screen-2xl gap-5">
-              {popularMovies.map((movie) => (
+              {popularMovie.map((movie) => (
                 <div key={movie?.id}>
                   <MovieItem
                     id={movie?.id}
-                    imgURL={`${IMAGE_PATH}${movie?.poster_path}`}
+                    imgURL={
+                      movie?.poster_path
+                        ? `${IMAGE_PATH_CARD}${movie.poster_path}`
+                        : `${NO_IMAGE_PATH}`
+                    }
                     title={movie?.title}
-                    vote_average={`${movie?.vote_average} / 10`}
+                    vote_average={`${movie?.vote_average?.toFixed(1)} / 10`}
                     release_date={movie?.release_date}
                   />
                 </div>
