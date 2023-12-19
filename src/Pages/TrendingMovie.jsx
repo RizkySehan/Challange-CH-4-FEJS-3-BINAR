@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import MovieItem from "../Component/MovieItem";
-import { getPopularMovie } from "../redux/actions/movieActions";
+import { getTrendingMovie } from "../redux/actions/movieActions";
 import { useDispatch, useSelector } from "react-redux";
 
-function PopularMovies() {
+function TrendingMovies() {
   const IMAGE_PATH_CARD = import.meta.env.VITE_API_IMGURL_CARD;
   const [errors, setErrors] = useState({
     isError: false,
@@ -11,19 +11,19 @@ function PopularMovies() {
   });
 
   const dispatch = useDispatch();
-  const { popularMovie } = useSelector((state) => state.movie);
+  const { trendingMovie } = useSelector((state) => state.movie);
 
   useEffect(() => {
-    dispatch(getPopularMovie(setErrors, errors));
+    dispatch(getTrendingMovie(setErrors, errors));
   }, []);
 
   return (
     <div className="max-w-screen-2xl mx-auto mb-10">
       <h1 className="text-white text-center font-semibold text-4xl pt-24 mb-5">
-        Popular Movie
+        Trending Movie
       </h1>
       <div className="flex justify-center items-center flex-wrap p-2 2xl:max-w-screen-2xl gap-5">
-        {popularMovie.map((movie) => (
+        {trendingMovie.map((movie) => (
           <div key={movie?.id}>
             <MovieItem
               id={movie?.id}
@@ -39,4 +39,4 @@ function PopularMovies() {
   );
 }
 
-export default PopularMovies;
+export default TrendingMovies;

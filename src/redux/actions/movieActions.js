@@ -1,14 +1,17 @@
 import axios from "axios";
 import {
+  setCreditMovie,
   setDetailMovie,
   setPopularMovie,
+  setRecomendMovie,
   setSearchMovie,
   setSimilarMovie,
+  setTopRateMovie,
   setTrailerMovie,
-  setTrandingMovie,
+  setTrendingMovie,
 } from "../reducers/movieReducer";
 
-export const getTrandingMovie = (setErrors, errors) => async (dispatch) => {
+export const getTrendingMovie = (setErrors, errors) => async (dispatch) => {
   try {
     const response = await axios.get(
       `${import.meta.env.VITE_API_URL}/3/trending/movie/day?language=en-US`,
@@ -20,7 +23,7 @@ export const getTrandingMovie = (setErrors, errors) => async (dispatch) => {
     );
     const { data } = response;
 
-    dispatch(setTrandingMovie(data?.results));
+    dispatch(setTrendingMovie(data?.results));
     setErrors({ ...errors, isError: false });
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -53,6 +56,38 @@ export const getPopularMovie = (setErrors, errors) => async (dispatch) => {
     const { data } = response;
 
     dispatch(setPopularMovie(data?.results));
+    setErrors({ ...errors, isError: false });
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      setErrors({
+        ...errors,
+        isError: true,
+        message: error?.response?.data?.message || error?.message,
+      });
+      return;
+    }
+    alert(error?.message);
+    setErrors({
+      ...errors,
+      isError: true,
+      message: error?.message,
+    });
+  }
+};
+
+export const getTopRateMovie = (setErrors, errors) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_URL}/3/movie/top_rated?language=en-US`,
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+        },
+      }
+    );
+    const { data } = response;
+
+    dispatch(setTopRateMovie(data?.results));
     setErrors({ ...errors, isError: false });
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -109,6 +144,54 @@ export const getSimilarMovie = (movieId) => async (dispatch) => {
     const { data } = response;
 
     dispatch(setSimilarMovie(data?.results));
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      alert(error?.response?.data?.message);
+      return;
+    }
+    alert(error?.message);
+  }
+};
+
+export const getRecomendMovie = (movieId) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${
+        import.meta.env.VITE_API_URL
+      }/3/movie/${movieId}/recommendations?language=en-US&page=1`,
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+        },
+      }
+    );
+    const { data } = response;
+
+    dispatch(setRecomendMovie(data?.results));
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      alert(error?.response?.data?.message);
+      return;
+    }
+    alert(error?.message);
+  }
+};
+
+export const getCreditMovie = (movieId) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${
+        import.meta.env.VITE_API_URL
+      }/3/movie/${movieId}/credits?language=en-US`,
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+        },
+      }
+    );
+    const { data } = response;
+
+    dispatch(setCreditMovie(data?.cast));
   } catch (error) {
     if (axios.isAxiosError(error)) {
       alert(error?.response?.data?.message);

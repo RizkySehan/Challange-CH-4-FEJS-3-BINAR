@@ -1,18 +1,23 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import imageError from "../assets/error.png";
 
 function MovieItem({ id, imgURL, title, vote_average, release_date }) {
+  const IMAGE_PATH_CARD = import.meta.env.VITE_API_IMGURL_CARD;
   return (
-    <div className="hover:-translate-y-3 transition-all duration-200 relative">
-      <img src={imgURL} width="250px" height="250px" className="rounded-lg" />
-      <div className="w-[100%] h-[100%] top-0 left-0 absolute flex justify-center items-center flex-col bg-slate-900 opacity-0 hover:opacity-80 hover:rounded-lg ">
-        <h2 className="font-bold text-2xl text-white text-center z-50">
+    <div className="relative overflow-hidden w-full">
+      <img
+        src={imgURL ? `${IMAGE_PATH_CARD}${imgURL}` : imageError}
+        className="rounded-lg"
+      />
+      <div className="top-0 bottom-0 w-full absolute flex justify-center items-center flex-col bg-slate-900 opacity-0 hover:opacity-80 hover:rounded-lg duration-300 ">
+        <h2 className="font-bold text-lg lg:text-2xl text-white text-center z-50">
           {title}
         </h2>
-        <h2 className="font-bold text-md text-yellow-400 text-center z-50">
+        <h2 className="font-bold lg:text-md text-yellow-400 text-center z-50">
           {vote_average}
         </h2>
-        <h2 className="font-bold text-md text-white text-center z-50">
+        <h2 className="font-bold lg:text-md text-white text-center z-50">
           {release_date}
         </h2>
         <Link

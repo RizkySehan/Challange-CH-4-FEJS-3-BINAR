@@ -1,23 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  trandingMovie: [],
+  trendingMovie: [],
   popularMovie: [],
+  topRateMovie: [],
   detailMovie: [],
   searchMovie: [],
   trailerMovie: [],
   similarMovie: [],
+  recomendMovie: [],
+  creditMovie: [],
 };
 
 const movieSlice = createSlice({
   name: "movie",
   initialState,
   reducers: {
-    setTrandingMovie: (state, action) => {
-      state.trandingMovie = action.payload;
+    setTrendingMovie: (state, action) => {
+      state.trendingMovie = action.payload;
     },
     setPopularMovie: (state, action) => {
       state.popularMovie = action.payload;
+    },
+    setTopRateMovie: (state, action) => {
+      state.topRateMovie = action.payload;
     },
     setDetailMovie: (state, action) => {
       state.detailMovie = action.payload;
@@ -31,16 +37,25 @@ const movieSlice = createSlice({
     setSimilarMovie: (state, action) => {
       state.similarMovie = action.payload;
     },
+    setRecomendMovie: (state, action) => {
+      state.recomendMovie = action.payload;
+    },
+    setCreditMovie: (state, action) => {
+      state.creditMovie = action.payload;
+    },
   },
 });
 
 export const {
-  setTrandingMovie,
+  setTrendingMovie,
   setPopularMovie,
+  setTopRateMovie,
   setDetailMovie,
   setSearchMovie,
   setTrailerMovie,
   setSimilarMovie,
+  setRecomendMovie,
+  setCreditMovie,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

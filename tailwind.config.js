@@ -11,7 +11,8 @@ export default {
         200: "500px",
       },
       backgroundColor: {
-        glassmorph: "rgba(255, 255, 255, 0.1)",
+        primary: "#04152d",
+        altPrimary: "#041226",
       },
     },
   },
