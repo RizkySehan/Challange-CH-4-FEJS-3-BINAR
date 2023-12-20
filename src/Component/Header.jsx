@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaTimes, FaBars } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [nav, setNav] = useState(false);
 
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ function Header() {
       return;
     }
 
-    const searchUrl = `/search?query=${searchQuery}&page=1`;
+    const searchUrl = `/search?page=1&query=${searchQuery}`;
 
     navigate(searchUrl);
   };
@@ -31,39 +32,56 @@ function Header() {
     <header
       className={`${
         isScrolled ? "shadow-sm bg-primary" : "shadow-none bg-transparent"
-      } py-6 px-10 fixed w-full z-50`}
+      } py-2 px-6 md:py-6 md:px-10 fixed w-full z-50`}
     >
-      <nav className="flex flex-col justify-between items-center md:flex-row">
+      <nav className="flex justify-between items-center">
         <Link to="/" className="text-white font-bold flex items-end">
-          <span className="text-6xl">M</span>
-          <p className="text-3xl">ovielist</p>
+          <span className="text-5xl md:text-6xl">M</span>
+          <p className="text-3xl hidden md:block">ovielist</p>
         </Link>
-        <div className="w-full relative mb-3 md:w-1/2 md:mb-0">
-          <form action="search" onSubmit={handleSearch}>
-            <input
-              type="text"
-              name="search"
-              placeholder="What do you want to watch?"
-              className="outline-none font-semibold text-md bg-white border-none ring-2 ring-slate-600 placeholder:text-slate-600 rounded-full border-white w-[100%] px-4 py-1 md:py-2"
-            />
-            <div className="absolute top-0 right-0 transform translate-y-1 md:translate-y-2 -translate-x-3 text-slate-600">
-              <FaSearch size={25} />
-            </div>
-          </form>
+        <div
+          className={`w-full lg:w-8/12 flex flex-col lg:flex-row gap-y-2 md:gap-y-4 justify-between items-center opacity-0 lg:opacity-100 absolute lg:static left-0 p-4 md:p-7 lg:p-0 ${
+            isScrolled ? "shadow-sm bg-primary" : "shadow-none bg-transparent"
+          } ${
+            nav
+              ? "md:top-20 top-16 opacity-100 backdrop-blur-sm lg:backdrop-blur-none"
+              : "top-[-500px]"
+          }`}
+        >
+          <div className="w-full relative mb-3 lg:w-1/2 md:mb-0">
+            <form action="search" onSubmit={handleSearch}>
+              <input
+                type="text"
+                name="search"
+                autoComplete="off"
+                placeholder="What do you want to watch?"
+                className="outline-none font-semibold text-md bg-white border-none ring-2 ring-slate-600 placeholder:text-slate-600 rounded-full border-white w-[100%] px-4 py-1 md:py-2"
+              />
+              <div className="absolute top-0 right-0 transform translate-y-1 md:translate-y-2 -translate-x-3 text-slate-600">
+                <FaSearch size={25} />
+              </div>
+            </form>
+          </div>
+          <div className="flex justify-center items-center gap-2">
+            <a
+              href="#"
+              className="px-3 py-1 md:px-6 md:py-2 bg-transparent border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-black transition-all duration-300"
+            >
+              Login
+            </a>
+            <a
+              href="#"
+              className="px-3 py-1 md:px-6 md:py-2 bg-white border-2 border-white text-black rounded-full font-bold hover:bg-transparent hover:text-white transition-all duration-300"
+            >
+              Register
+            </a>
+          </div>
         </div>
-        <div className="flex justify-center items-center gap-2">
-          <a
-            href="/"
-            className="px-3 py-1 md:px-6 md:py-2 bg-transparent border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-black transition-all duration-300"
-          >
-            Login
-          </a>
-          <a
-            href="/"
-            className="px-3 py-1 md:px-6 md:py-2 bg-white border-2 border-white text-black rounded-full font-bold hover:bg-transparent hover:text-white transition-all duration-300"
-          >
-            Register
-          </a>
+        <div
+          onClick={() => setNav(!nav)}
+          className="text-white cursor-pointer z-20 lg:hidden"
+        >
+          {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
         </div>
       </nav>
     </header>

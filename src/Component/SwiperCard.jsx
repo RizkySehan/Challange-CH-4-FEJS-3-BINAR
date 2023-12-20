@@ -6,17 +6,21 @@ import PropTypes from "prop-types";
 function SwiperCard({ swiperCard }) {
   return (
     <Swiper
-      spaceBetween={10}
+      spaceBetween={4}
       grabCursor={true}
+      slidesPerView={2}
       breakpoints={{
         576: {
           slidesPerView: 3,
+          spaceBetween: 10,
         },
         768: {
           slidesPerView: 4,
+          spaceBetween: 10,
         },
         1024: {
           slidesPerView: 6,
+          spaceBetween: 10,
         },
       }}
     >

@@ -51,18 +51,18 @@ function Hero() {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
-          className={`radiasi w-full min-h-screen flex justify-evenly items-center px-24 md:p-40 rounded-xl`}
+          className={`radiasi w-full min-h-screen flex justify-evenly items-start md:items-center px-4 pt-36 md:pt-0 sm:px-24 lg:p-40 rounded-xl`}
         >
           <div className="flex flex-col">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-white max-w-xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-8 text-white max-w-xl">
               {movie?.title}
             </h1>
             <div className="flex items-center gap-4 mb-2">
-              <p className="text-yellow-400 text-2xl font-bold">
+              <p className="text-yellow-400 text-lg md:text-2xl font-bold">
                 {`${movie?.vote_average?.toFixed(1)} / 10`}
               </p>
-              <p className="text-white text-2xl">|</p>
-              <p className="text-white text-2xl font-semibold">{`${movie?.release_date}`}</p>
+              <p className="text-white text-lg md:text-2xl">|</p>
+              <p className="text-white text-lg md:text-2xl font-semibold">{`${movie?.release_date}`}</p>
             </div>
             <p className="mb-8 text-sm sm:text-md md:text-lg text-white font-semibold max-w-2xl">
               {movie?.overview}

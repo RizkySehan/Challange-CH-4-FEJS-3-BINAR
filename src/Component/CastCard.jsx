@@ -1,16 +1,17 @@
 import PropTypes from "prop-types";
+import noProfile from "../assets/noProfile.png";
 
 function CastCard({ profile_path, name, character }) {
   const IMAGE_PATH_CARD = import.meta.env.VITE_API_IMGURL_CARD;
   return (
     <div className="flex flex-col justify-center items-center">
       <img
-        src={`${IMAGE_PATH_CARD}${profile_path}`}
+        src={profile_path ? `${IMAGE_PATH_CARD}${profile_path}` : noProfile}
         alt="Cast_Profile"
-        className="w-40 h-40 rounded-full object-cover"
+        className="w-32 h-32 rounded-full object-cover"
       />
-      <h2 className="text-white text-xl">{name}</h2>
-      <h3 className="text-slate-600 text-lg">{character}</h3>
+      <h2 className="text-white text-sm">{name}</h2>
+      <h3 className="text-slate-600 text-sm">{character}</h3>
     </div>
   );
 }

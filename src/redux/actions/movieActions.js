@@ -201,40 +201,29 @@ export const getCreditMovie = (movieId) => async (dispatch) => {
   }
 };
 
-export const getSearchMovie =
-  (query, page, setErrors, errors) => async (dispatch) => {
-    try {
-      const response = await axios.get(
-        `${
-          import.meta.env.VITE_API_URL
-        }/api/v1/search/movie?page=${page}&query=${query}`,
-        {
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
-          },
-        }
-      );
-      const { data } = response;
-
-      dispatch(setSearchMovie(data?.results));
-      setErrors({ ...errors, isError: false });
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        setErrors({
-          ...errors,
-          isError: true,
-          message: error?.response?.data?.message || error?.message,
-        });
-        return;
+export const getSearchMovie = (query, page) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `${
+        import.meta.env.VITE_API_URL
+      }/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`,
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_API_AUTH_TOKEN}`,
+        },
       }
-      alert(error?.message);
-      setErrors({
-        ...errors,
-        isError: true,
-        message: error?.message,
-      });
+    );
+    const { data } = response;
+
+    dispatch(setSearchMovie(data?.results));
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      alert(error?.response?.data?.message);
+      return;
     }
-  };
+    alert(error?.message);
+  }
+};
 
 export const getTrailerMovie = (movieId) => async (dispatch) => {
   try {

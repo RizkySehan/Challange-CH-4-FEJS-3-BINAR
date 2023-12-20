@@ -6,19 +6,17 @@ import CastCard from "../Component/CastCard";
 function SliderCast({ castCard, title }) {
   return (
     <div>
-      <div className="flex justify-between my-8 mx-4">
-        <h1 className="text-white font-bold text-2xl">{title}</h1>
-      </div>
-      <div className="px-20">
+      <h1 className="text-white font-bold text-2xl mb-5">{title}</h1>
+      <div className="">
         <Swiper
           spaceBetween={10}
           grabCursor={true}
           breakpoints={{
             576: {
-              slidesPerView: 3,
+              slidesPerView: 1,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 5,
             },
             1024: {
               slidesPerView: 6,
