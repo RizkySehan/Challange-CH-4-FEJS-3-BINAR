@@ -14,7 +14,7 @@ function TopRateMovies() {
 
   useEffect(() => {
     dispatch(getTopRateMovie(setErrors, errors));
-  }, []);
+  }, [dispatch, errors]);
 
   return (
     <div className="max-w-screen-2xl mx-auto mb-10 px-6 md:px-20">

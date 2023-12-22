@@ -12,7 +12,7 @@ const TrailerMovie = () => {
   useEffect(() => {
     dispatch(getTrailerMovie(movieId));
     dispatch(getDetailMovie(movieId));
-  }, [movieId]);
+  }, [dispatch, movieId]);
 
   return (
     <div className=" relative w-full min-h-screen">

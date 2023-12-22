@@ -43,7 +43,7 @@ function DetailMovie() {
         }}
         className="radiasi w-full min-h-screen flex flex-col justify-start items-center lg:justify-center gap-y-4 box-border pt-24 md:pt-32 lg:pt-0"
       >
-        <div className="flex justify-center items-start md:container md:mx-auto md:pt-12 lg:pt-24 lg:px-5">
+        <div className="flex justify-center items-start md:container md:mx-auto pt-8 md:pt-12 lg:pt-24 lg:px-5">
           <img
             src={`${IMAGE_PATH_CARD}${detailMovie?.poster_path}`}
             alt="Image.jpg"

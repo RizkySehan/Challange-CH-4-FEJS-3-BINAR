@@ -24,7 +24,7 @@ function Home() {
     dispatch(getPopularMovie(setErrors, errors));
     dispatch(getTrendingMovie(setErrors, errors));
     dispatch(getTopRateMovie(setErrors, errors));
-  }, []);
+  }, [dispatch, errors]);
   return (
     <>
       <Hero />

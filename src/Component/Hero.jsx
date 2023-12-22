@@ -25,7 +25,7 @@ function Hero() {
 
   useEffect(() => {
     dispatch(getTrendingMovie(setErrors, errors));
-  }, [dispatch]);
+  }, [dispatch, errors]);
 
   useEffect(() => {
     if (trendingMovie.length > 0) {
