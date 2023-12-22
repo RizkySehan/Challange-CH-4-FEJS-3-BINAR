@@ -6,7 +6,7 @@ import CastCard from "../Component/CastCard";
 function SliderCast({ castCard, title }) {
   return (
     <div>
-      <h1 className="text-white font-bold text-2xl mb-5">{title}</h1>
+      <h1 className="text-white font-bold text-2xl mb-3">{title}</h1>
       <div className="">
         <Swiper
           spaceBetween={10}

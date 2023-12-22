@@ -41,9 +41,9 @@ function DetailMovie() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
-        className="radiasi w-full min-h-screen flex flex-col justify-start items-center lg:justify-center gap-y-4 box-border pt-24 md:pt-32 lg:pt-0"
+        className="radiasi w-full min-h-screen flex flex-col justify-start items-center lg:justify-center gap-y-4 box-border"
       >
-        <div className="flex justify-center items-start md:container md:mx-auto pt-8 md:pt-12 lg:pt-24 lg:px-5">
+        <div className="flex justify-center items-start md:container md:mx-auto pt-32 md:pt-40 lg:pt-28 lg:px-5">
           <img
             src={`${IMAGE_PATH_CARD}${detailMovie?.poster_path}`}
             alt="Image.jpg"
@@ -54,7 +54,7 @@ function DetailMovie() {
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white md:mb-2">
               {detailMovie?.title}
             </h2>
-            <p className="text-white font-semibold mb-1 md:mb-3 text-sm md:text-lg">{`Release: ${detailMovie?.release_date}`}</p>
+            <p className="text-white font-semibold mb-1 text-sm md:text-lg">{`Release: ${detailMovie?.release_date}`}</p>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
               <div className="flex flex-col justify-center text-sm md:text-lg">
                 <p className="text-yellow-400 font-bold">
@@ -65,7 +65,7 @@ function DetailMovie() {
                 ) : (
                   <p className=" text-white font-semibold">{`Tagline: "Tagline Not Found"`}</p>
                 )}
-                <div className="flex justify-start items-center gap-1 md:gap-3 mb-4 md:mb-10">
+                <div className="flex justify-start items-center gap-1 md:gap-3 mb-4">
                   {detailMovie?.genres?.map((genre) => (
                     <div key={genre?.id}>
                       <p className="rounded-lg italic font-semibold text-white py-0.2 px-2 md:px-3 bg-red-600 mt-2">
@@ -92,7 +92,7 @@ function DetailMovie() {
               <h3 className="text-white text-lg md:text-2xl font-semibold mb-1 md:mb-2">
                 Overview
               </h3>
-              <p className="text-white text-sm md:text-base font-semibold max-w-2xl mb-5">
+              <p className="text-white text-sm md:text-base font-semibold max-w-2xl mb-2">
                 {detailMovie?.overview}
               </p>
             </div>
