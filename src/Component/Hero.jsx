@@ -51,7 +51,7 @@ function Hero() {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
-          className={`radiasi w-full min-h-screen flex justify-evenly items-start md:items-center px-4 pt-36 md:pt-0 sm:px-24 lg:p-40 rounded-xl`}
+          className={`radiasi w-full min-h-screen flex justify-evenly items-start md:items-center px-4 md:pt-0 sm:px-24 lg:p-40 rounded-xl`}
         >
           <div className="flex flex-col">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-8 text-white max-w-xl">
