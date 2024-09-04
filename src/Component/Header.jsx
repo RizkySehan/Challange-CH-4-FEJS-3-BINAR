@@ -62,20 +62,6 @@ function Header() {
               </div>
             </form>
           </div>
-          <div className="flex justify-center items-center gap-2">
-            <a
-              href="#"
-              className="px-3 py-1 md:px-6 md:py-2 bg-transparent border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-black transition-all duration-300"
-            >
-              Login
-            </a>
-            <a
-              href="#"
-              className="px-3 py-1 md:px-6 md:py-2 bg-white border-2 border-white text-black rounded-full font-bold hover:bg-transparent hover:text-white transition-all duration-300"
-            >
-              Register
-            </a>
-          </div>
         </div>
         <div
           onClick={() => setNav(!nav)}

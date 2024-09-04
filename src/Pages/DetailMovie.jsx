@@ -102,7 +102,7 @@ function DetailMovie() {
           </div>
         </div>
       </div>
-      <div className="container mx-auto pt-20 px-3 md:px-6">
+      <div className="container mx-auto px-3 md:px-6">
         <div className="mb-10">
           <h1 className="text-white text-2xl md:text-3xl font-bold mb-8 px-1">
             Similar Movies
